@@ -63,7 +63,21 @@ const BottomBox = styled(WhiteBox)`
 `
 
 const Separator = styled.div`
-
+    margin: 20px 0px 30px 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    div {
+        width: 100%;
+        height: 1px;
+        background-color: rgb(219, 219, 219);
+    }
+    span {
+        margin: 0px 10px;
+        font-weight: 600;
+        color: #8e8e8e;
+    }
 `
 
 const Login = () => {
@@ -77,9 +91,11 @@ const Login = () => {
                         <input type='password' placeholder="Password" />
                         <input type='submit' value="Log in" />
                     </form>
-                    <div>
-                        OR
-                    </div>
+                    <Separator>
+                        <div></div>
+                        <span>Or</span>
+                        <div></div>
+                    </Separator>
                     <div>
                         <span>Log in with Facebook</span>
                     </div>
