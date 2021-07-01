@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faInstagram, faFacebookSquare } from "@fortawesome/free-brands-svg-icons"
 
 const Container = styled.div`
     display: flex;
@@ -58,8 +60,13 @@ const TopBox = styled(WhiteBox)`
 `
 
 const BottomBox = styled(WhiteBox)`
-    padding: 20px 0px;
+    padding: 20px 40px;
     text-align: center;
+    a {
+        font-weight: 600;
+        color: #0095f6;
+        margin-left: 5px;
+    }
 `
 
 const Separator = styled.div`
@@ -80,12 +87,31 @@ const Separator = styled.div`
     }
 `
 
+const FacebookLogin = styled.div`
+    color: #385285;
+    span {
+        margin-left: 10px;
+        font-weight: 600;
+    }
+`
+
+const ForgotPassword = styled.div`
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        font-size: 12px;
+        color: #00376b;
+    }
+`
+
 const Login = () => {
     return (
         <Container>
             <Wrapper>
                 <TopBox>
-                    <h1>Instagram</h1>
+                    <FontAwesomeIcon icon={faInstagram} size="3x" />
                     <form>
                         <input type='text' placeholder="Username" />
                         <input type='password' placeholder="Password" />
@@ -93,24 +119,22 @@ const Login = () => {
                     </form>
                     <Separator>
                         <div></div>
-                        <span>Or</span>
+                        <span>OR</span>
                         <div></div>
                     </Separator>
-                    <div>
+                    <FacebookLogin>
+                        <FontAwesomeIcon icon={faFacebookSquare} />
                         <span>Log in with Facebook</span>
-                    </div>
-                    <span>Forget password?</span>
+                    </FacebookLogin>
+                    <ForgotPassword>
+                        <span>Forgot password?</span>
+                    </ForgotPassword>
                 </TopBox>
                 <BottomBox>
                     <span>Don't have an account?</span>
-                    <span>Sign up</span>
+                    <a href="#">Sign up</a>
                 </BottomBox>
             </Wrapper>
-            <div>
-                <span>Get the app.</span>
-                <button>App Store</button>
-                <button>Google Play</button>
-            </div>
         </Container>
     )
 }
