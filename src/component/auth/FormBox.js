@@ -15,6 +15,7 @@ const Container = styled(BaseBox)`
         justify-items: center;
         flex-direction: column;
         width: 100%;
+        color: #000;
     }
  `
 
