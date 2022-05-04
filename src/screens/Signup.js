@@ -52,7 +52,7 @@ const Signup = () => {
     const history = useHistory();
     const onCompleted = (data) => {
         const { userName, password } = getValues();
-        const { createAccount: { ok } } = data
+        const { createAccount: { ok } } = data;
         if (!ok) {
             return;
         }
