@@ -7,6 +7,15 @@ import Avatar from '../Avatar';
 import { FatText } from '../shared';
 import propTypes from 'prop-types';
 
+const LIKE_PHOTO_MUTATION = gql`
+    mutation likePhoto($id: Int!) {
+        likePhoto(id: $id) {
+            ok
+            error
+        }
+    }
+`;
+
 const PhotoContainer = styled.div`
     background-color: white;
     border: solid 1px ${(props) => props.theme.borderColor};
@@ -61,6 +70,11 @@ const Likes = styled(FatText)`
 `;
 
 function Photo({ id, user, file, isLiked, likes }) {
+    const [likePhotoMutation, { loading }] = useMutation(LIKE_PHOTO_MUTATION, {
+        variables: {
+            id,
+        },
+    });
     return (
         <PhotoContainer key={id}>
             <PhotoHeader>
@@ -71,7 +85,7 @@ function Photo({ id, user, file, isLiked, likes }) {
             <PhotoData>
                 <PhotoActions>
                     <div>
-                        <PhotoAction>
+                        <PhotoAction onClick={likePhotoMutation}>
                             <FontAwesomeIcon
                                 style={{ color: isLiked ? 'tomato' : 'inherit' }}
                                 icon={isLiked ? SolidHeart : faHeart}
