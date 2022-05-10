@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Avatar from '../Avatar';
 import { FatText } from '../shared';
 import propTypes from 'prop-types';
+import Comments from './Comments';
 
 const LIKE_PHOTO_MUTATION = gql`
     mutation likePhoto($id: Int!) {
@@ -69,7 +70,8 @@ const Likes = styled(FatText)`
     display: block;
 `;
 
-function Photo({ id, user, file, isLiked, likes }) {
+function Photo({ id, user, file, isLiked, likes, caption, commentNumber, comments }) {
+    console.log(caption);
     const updateLikePhoto = (cache, result) => {
         const {
             data: {
@@ -126,6 +128,7 @@ function Photo({ id, user, file, isLiked, likes }) {
                     </div>
                 </PhotoActions>
                 <Likes>{likes === 1 ? '1 likes' : `${likes} likes`}</Likes>
+                <Comments author={user.userName} caption={caption} commentNumber={commentNumber} comments={comments} />
             </PhotoData>
         </PhotoContainer>
     );
@@ -140,6 +143,8 @@ Photo.propTypes = {
     file: propTypes.string.isRequired,
     isLiked: propTypes.bool.isRequired,
     likes: propTypes.number.isRequired,
+    commentNumber: propTypes.number.isRequired,
+    comments: propTypes.arrayOf(propTypes.shape({})),
 };
 
 export default Photo;
