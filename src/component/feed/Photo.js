@@ -71,7 +71,6 @@ const Likes = styled(FatText)`
 `;
 
 function Photo({ id, user, file, isLiked, likes, caption, commentNumber, comments }) {
-    console.log(caption);
     const updateLikePhoto = (cache, result) => {
         const {
             data: {
@@ -130,7 +129,13 @@ function Photo({ id, user, file, isLiked, likes, caption, commentNumber, comment
                     </div>
                 </PhotoActions>
                 <Likes>{likes === 1 ? '1 likes' : `${likes} likes`}</Likes>
-                <Comments author={user.userName} caption={caption} commentNumber={commentNumber} comments={comments} />
+                <Comments
+                    photoId={id}
+                    author={user.userName}
+                    caption={caption}
+                    commentNumber={commentNumber}
+                    comments={comments}
+                />
             </PhotoData>
         </PhotoContainer>
     );
