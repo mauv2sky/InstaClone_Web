@@ -4,7 +4,9 @@ import { FatText } from '../shared';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const CommentContainer = styled.div``;
+const CommentContainer = styled.div`
+    margin-bottom: 5px;
+`;
 
 const PhotoCaption = styled.span`
     margin-left: 10px;
