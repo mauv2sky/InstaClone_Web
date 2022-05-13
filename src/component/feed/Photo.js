@@ -3,6 +3,7 @@ import { faBookmark, faComment, faHeart, faPaperPlane } from '@fortawesome/free-
 import { faHeart as SolidHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Avatar from '../Avatar';
 import { FatText } from '../shared';
 import propTypes from 'prop-types';
@@ -104,8 +105,12 @@ function Photo({ id, user, file, isLiked, likes, caption, commentNumber, comment
     return (
         <PhotoContainer key={id}>
             <PhotoHeader>
-                <Avatar lg url={user.avatar} />
-                <UserName>{user.userName}</UserName>
+                <Link to={`/users/${user.userName}`}>
+                    <Avatar lg url={user.avatar} />
+                </Link>
+                <Link to={`/users/${user.userName}`}>
+                    <UserName>{user.userName}</UserName>
+                </Link>
             </PhotoHeader>
             <PhotoFile src={file} />
             <PhotoData>

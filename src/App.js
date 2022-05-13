@@ -10,6 +10,7 @@ import Signup from './screens/Signup';
 import NotFound from './screens/NotFound';
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from './component/Layout';
+import Profile from './screens/Profile';
 
 function App() {
     const isLoggedIn = useReactiveVar(isLoggedInVar);
@@ -35,6 +36,9 @@ function App() {
                                     <Signup />
                                 </Route>
                             ) : null}
+                            <Route path={`/users/:userName`}>
+                                <Profile />
+                            </Route>
                             <Route>
                                 <NotFound />
                             </Route>
