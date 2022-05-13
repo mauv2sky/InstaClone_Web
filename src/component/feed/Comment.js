@@ -29,7 +29,7 @@ const PhotoCaption = styled.span`
     }
 `;
 
-const DeleteButton = styled.text`
+const DeleteButton = styled.p`
     float: right;
     background-color: inherit;
     border: 0;
